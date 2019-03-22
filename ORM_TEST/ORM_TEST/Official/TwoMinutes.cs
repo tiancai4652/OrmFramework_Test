@@ -12,6 +12,7 @@ namespace SqlSugar_Test.Official
     //Base DbContext
     //http://www.codeisbug.com/Doc/8/1165 Test
     //利用数据上下文的增删改查，增加一个事务处理（失败回滚）
+    //delete 用的是dynamic
     //Find_Pages 当我没有条件时，那么我如何写？   var listStu = dbcontext.StudentDb.GetPageList(x=>x is Student,pageCondition);
 
 
@@ -108,7 +109,7 @@ namespace SqlSugar_Test.Official
             dbcontext.StudentDb.InsertRange(list);
 
             var pageCondition = new PageModel() { PageIndex = 1, PageSize = 2 };
-            var listStu = dbcontext.StudentDb.GetPageList(x=>!string.IsNullOrEmpty(x.Name),pageCondition,null,OrderByType.Asc);
+            var listStu = dbcontext.StudentDb.GetPageList(x=> true,pageCondition,null,OrderByType.Asc);
             Assert.Equal(2, listStu.Count);
             Assert.Equal(Jack.Name, listStu[0].Name);
             Assert.Equal(Sam.Name, listStu[1].Name);

@@ -90,7 +90,9 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DataBase\DBGlobalPara_Sqlite.cs" />
     <Compile Include="Logger\Global.cs" />
+    <Compile Include="MyTest\TestView.cs" />
     <Compile Include="Official\OneMinute.cs" />
+    <Compile Include="Official\ThreeMinute.cs" />
     <Compile Include="Official\TwoMinutes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
