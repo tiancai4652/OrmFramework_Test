@@ -13,22 +13,45 @@ namespace SqlSugar_Test.Official
     //需要Nuget Sqlite.Dll
     //需要Newtoon.Json(SqlSugar 部分功能用到Newtonsoft.Json.dll，需要在Nuget上安装 Newtonsoft.Json 9.0.0.1及以上版本)
     //实体没有主键时不能自己添加实体主键
+    //分页查询时从0开始查和从1开始查是一样的，请看Find_Pages方法
+    //已启动输出SQL日志，SQL日志放在Debug/log.txt文件中
 
 
     public class OneMinute
     {
+        /// <summary>
+        /// 测试数据库
+        /// </summary>
         static string dbPath = "Student.db";
+        /// <summary>
+        /// 连接实例
+        /// </summary>
         public static SqlSugarClient db
         {
-            get => new SqlSugarClient(
-    new ConnectionConfig()
-    {
-        ConnectionString = $"Data Source={dbPath}",
-        DbType = DbType.Sqlite,//设置数据库类型
-        IsAutoCloseConnection = true,//自动释放数据务，如果存在事务，在事务结束后释放
-        InitKeyType = InitKeyType.Attribute //从实体特性中读取主键自增列信息
-    });
+            get
+            {
+                var client = new SqlSugarClient(new ConnectionConfig()
+                {
+                    ConnectionString = $"Data Source={dbPath}",
+                    DbType = DbType.Sqlite,//设置数据库类型
+                    IsAutoCloseConnection = true,//自动释放数据务，如果存在事务，在事务结束后释放
+                    InitKeyType = InitKeyType.Attribute //从实体特性中读取主键自增列信息
+                });
+                client.Ado.IsEnableLogEvent = true;
+                //用来打印Sql方便你调式    
+                client.Ado.LogEventStarting = (sql, pars) =>
+                {
+                    logger.Trace(sql + "\r\n" +
+                    db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
+                };
+                return client;
+            }
         }
+        /// <summary>
+        /// 日志
+        /// </summary>
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
 
         [Trait("Method","Inisert_One")]
         [Fact]
@@ -119,8 +142,10 @@ namespace SqlSugar_Test.Official
             var getPage = db.Queryable<StudentModel>().ToPageList(0, 1, ref total);//根据分页查询
             Assert.Equal("jack", getPage[0].Name);
             getPage = db.Queryable<StudentModel>().ToPageList(1, 1, ref total);//根据分页查询
-            Assert.Equal("Same", getPage[0].Name);
+            Assert.Equal("jack", getPage[0].Name);
             getPage = db.Queryable<StudentModel>().ToPageList(2, 1, ref total);//根据分页查询
+            Assert.Equal("Same", getPage[0].Name);
+            getPage = db.Queryable<StudentModel>().ToPageList(3, 1, ref total);//根据分页查询
             Assert.Equal("Shaco", getPage[0].Name);
         }
 
@@ -137,20 +162,9 @@ namespace SqlSugar_Test.Official
             Assert.Null(db.Queryable<StudentModel>().InSingle(1));
         }
 
-        public void Demo()
-        {
-        }
-
-
         void Ini()
         {
-            //用来打印Sql方便你调式    
-            db.Aop.OnLogExecuting = (sql, pars) =>
-            {
-                System.Diagnostics.Debug.WriteLine(sql + "\r\n" +
-                db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
-                System.Diagnostics.Debug.WriteLine("\r\n");
-            };
+            
             try
             {
                 db.Deleteable<StudentModel>(0).ExecuteCommand();
@@ -159,7 +173,7 @@ namespace SqlSugar_Test.Official
             }
             catch (Exception ex)
             {
-
+                logger.Error(ex);
             }
         }
     }

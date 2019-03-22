@@ -1,0 +1,15 @@
+2019-03-22 13:18:19.3741|TRACE|SqlSugar_Test.Official.OneMinute|DELETE FROM `Student` WHERE `Id` IN ('0') 
+{}
+2019-03-22 13:18:30.8882|TRACE|SqlSugar_Test.Official.OneMinute|DELETE FROM `Student` WHERE `Id` IN ('1') 
+{}
+2019-03-22 13:18:31.6783|TRACE|SqlSugar_Test.Official.OneMinute|DELETE FROM `Student` WHERE `Id` IN ('2') 
+{}
+2019-03-22 13:18:31.8853|TRACE|SqlSugar_Test.Official.OneMinute|INSERT INTO `Student`  
+           (`Id`,`Name`)
+     VALUES
+           (@Id,@Name) ;
+{"@Id":0,"@Name":"jack"}
+2019-03-22 13:18:32.0223|TRACE|SqlSugar_Test.Official.OneMinute|SELECT `Id`,`Name` FROM `Student`  
+{}
+2019-03-22 13:18:32.1703|TRACE|SqlSugar_Test.Official.OneMinute|SELECT `Id`,`Name` FROM `Student`  WHERE `Id` IN (@InPara0)   
+{"@InPara0":0}
