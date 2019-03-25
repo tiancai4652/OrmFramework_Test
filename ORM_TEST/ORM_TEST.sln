@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlSugar_Test", "ORM_TEST\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseGenerater", "DatabaseGenerater\DatabaseGenerater.csproj", "{65A91051-A387-46B1-94F2-0562C41F6EAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper_Test", "Dapper_Test\Dapper_Test.csproj", "{31FD35E9-8EC5-4990-BA5E-30026A9013DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{65A91051-A387-46B1-94F2-0562C41F6EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65A91051-A387-46B1-94F2-0562C41F6EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65A91051-A387-46B1-94F2-0562C41F6EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31FD35E9-8EC5-4990-BA5E-30026A9013DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FD35E9-8EC5-4990-BA5E-30026A9013DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FD35E9-8EC5-4990-BA5E-30026A9013DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FD35E9-8EC5-4990-BA5E-30026A9013DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
