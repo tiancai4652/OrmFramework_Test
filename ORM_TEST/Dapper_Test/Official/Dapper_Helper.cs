@@ -69,7 +69,10 @@ namespace Dapper_Test.Official
 
         public void MultiMapping()
         {
-            var sql =@"select * from #Posts pleft join #Users u on u.Id = p.OwnerIdOrder by p.Id";
+            var sql =
+@"select * from #Posts p
+left join #Users u on u.Id = p.OwnerId
+Order by p.Id";
             var data = connection.Query<Post, User, Post>(sql, (post, user) => { post.Owner = user; return post; });
             var post = data.First();
             Assert.Equal("Sams Post1", post.Content);

@@ -20,11 +20,10 @@ namespace DatabaseGenerater
         static void Main(string[] args)
         {
 
-            //UserContext context = new UserContext("MySQL");
+            UserContext context = new UserContext("MySQL");
             //UserContext context = new UserContext("Sqlite");
-            UserContext context = new UserContext("SqlServer");
+            //UserContext context = new UserContext("SqlServer");
 
-            //User x = context.User.Find("ee695d7f5c0f4f94975e3d9bb396b286");
             Authority auth1 = new Authority("Level 1");
             Authority auth2 = new Authority("Level 2");
             Authority auth3 = new Authority("Level 3");
