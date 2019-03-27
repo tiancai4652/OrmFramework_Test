@@ -152,5 +152,35 @@ namespace ORM_Test_Demo_wpf
             }
         }
 
+        public void DeleteGroupAll()
+        {
+            using (UserContext context = new UserContext(DB))
+            {
+                //context.Group.RemoveRange(context.Group.ToList());
+                
+                context.Database.ExecuteSqlCommand("DELETE FROM Groups");
+                context.SaveChanges();
+            }
+        }
+
+        public void DeleteUserAll()
+        {
+            using (UserContext context = new UserContext(DB))
+            {
+                //context.User.RemoveRange(context.User.ToList());
+                context.Database.ExecuteSqlCommand("DELETE FROM Users");
+                context.SaveChanges();
+            }
+        }
+
+        public void DeleteAuthorityAll()
+        {
+            using (UserContext context = new UserContext(DB))
+            {
+                //context.Authority.RemoveRange(context.Authority.ToList());
+                context.Database.ExecuteSqlCommand("DELETE FROM Authorities");
+                context.SaveChanges();
+            }
+        }
     }
 }

@@ -20,9 +20,9 @@ namespace DatabaseGenerater
         static void Main(string[] args)
         {
 
-            UserContext context = new UserContext("MySQL");
+            //UserContext context = new UserContext("MySQL");
             //UserContext context = new UserContext("Sqlite");
-            //UserContext context = new UserContext("SqlServer");
+            UserContext context = new UserContext("SqlServer");
 
             Authority auth1 = new Authority("Level 1");
             Authority auth2 = new Authority("Level 2");

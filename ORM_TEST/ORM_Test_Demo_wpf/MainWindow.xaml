@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-    Title="MainWindow" Height="450" Width="800">
+    Title="MainWindow" SizeToContent="Height" Width="800" Icon="Resource/ic.ico">
     <Grid>
         <StackPanel>
             <materialDesign:Card Padding="1" Margin="16,8">
@@ -24,14 +24,30 @@
                         <materialDesign:Card
     materialDesign:ShadowAssist.ShadowDepth="Depth3"
     materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
-    Padding="40"/>
+     />
+
+                    </Grid>
+                    <Grid>
+                        <Button Name="INI_BUTTON" HorizontalAlignment="Left" Margin="0,24" Width="151" Content="初始化数据库" Click="Button_Click_2"/>
+                        <TextBlock Margin="174,0,10,0" Text="{Binding txtIni}" VerticalAlignment="Center" FontSize="20"><Run Text="xxxx"/></TextBlock>
+                       
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Padding="1" Margin="16,8">
+                <Grid>
+                    <Grid>
+                        <materialDesign:Card
+    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+    materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+     />
 
                     </Grid>
                     <Grid>
                         <Button HorizontalAlignment="Left" Margin="0,24" Width="151" Content="创建数据" Click="Button_Click"/>
                         <TextBlock Margin="174,0,10,0" Text="{Binding txtReady}" VerticalAlignment="Center" FontSize="20"><Run Text="xxxx"/></TextBlock>
                         <ComboBox Margin="446,24,62,28" SelectedItem="{Binding DataCount}">
-                            <System:String>1</System:String>
+                            <System:String>100</System:String>
                             <System:String>1000</System:String>
                             <System:String>10000</System:String>
                             <System:String>100000</System:String>
@@ -47,12 +63,120 @@
                         <materialDesign:Card
     materialDesign:ShadowAssist.ShadowDepth="Depth3"
     materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
-    Padding="40"/>
-
+     />
                     </Grid>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+
                         <Button Name="INSERT_BUTTON" HorizontalAlignment="Left" Margin="0,24" Width="151" Content="Insert" Click="Button_Click_1"/>
-                        <TextBlock Text="{Binding txtInsert}" Margin="174,0,10,0"  VerticalAlignment="Center" FontSize="20"><Run Text="xxxx"/></TextBlock>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <ProgressBar
+  Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding IsDapperInsert}"
+  Width="100" Height="10"
+  IsIndeterminate="True"  />
+                                <TextBlock Text="{Binding txtInsertDapper}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ProgressBar
+  Orientation="Horizontal"  HorizontalAlignment="Left" Visibility="{Binding IsEFInsert}"
+  Width="100" Height="10"
+  IsIndeterminate="True" />
+
+                                <TextBlock Text="{Binding txtInsertEF}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+                          
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Padding="1" Margin="16,8">
+                <Grid>
+                    <Grid>
+                        <materialDesign:Card
+    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+    materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+    />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Name="FIND_BUTTON" HorizontalAlignment="Left" Margin="0,24" Width="151" Content="FindAll" Click="FIND_BUTTON_Click" />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <ProgressBar
+  Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding IsDapperFind}"
+  Width="100" Height="10"
+  IsIndeterminate="True"  />
+                                <TextBlock Text="{Binding txtFindDapper}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ProgressBar
+  Orientation="Horizontal"  HorizontalAlignment="Left" Visibility="{Binding IsEFFind}"
+  Width="100" Height="10"
+  IsIndeterminate="True" />
+
+                                <TextBlock Text="{Binding txtFindEF}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Padding="1" Margin="16,8" >
+                <Grid>
+                    <Grid>
+                        <materialDesign:Card
+    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+    materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+    />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Name="DELETE_BUTTON" HorizontalAlignment="Left" Margin="0,24" Width="151" Content="DeleteAll" Click="DELETE_BUTTON_Click"  />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <ProgressBar
+  Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding IsDapperDelete}"
+  Width="100" Height="10"
+  IsIndeterminate="True"  />
+                                <TextBlock Text="{Binding txtDeleteDapper}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ProgressBar
+  Orientation="Horizontal"  HorizontalAlignment="Left" Visibility="{Binding IsEFDelete}"
+  Width="100" Height="10"
+  IsIndeterminate="True" />
+
+                                <TextBlock Text="{Binding txtDeleteEF}" TextWrapping="Wrap"    VerticalAlignment="Center" FontSize="20" Margin="152,6,10,10"></TextBlock>
+                            </Grid>
+
+                        </Grid>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

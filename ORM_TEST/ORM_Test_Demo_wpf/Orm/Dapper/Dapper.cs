@@ -127,7 +127,7 @@ namespace ORM_Test_Demo_wpf
 
         void InsertGroupManyAlone(List<Group> groups)
         {
-            ThisConn.Execute("insert Groups(ID,Describe values(@ID,@Describe))", groups);
+            ThisConn.Execute("insert Groups(ID,Describe) values(@ID,@Describe)", groups);
         }
 
         /// <summary>
@@ -153,7 +153,6 @@ namespace ORM_Test_Demo_wpf
             var atsList = users.Select(t => t.Authorities).ToList();
             var ats = new List<Authority>();
             atsList.ForEach(t => ats.AddRange(t));
-
             InsertAuthorityManyAlone(ats);
             InsertGroupManyAlone(groups);
             InsertUserManyAlone(users);
@@ -192,13 +191,28 @@ namespace ORM_Test_Demo_wpf
             DeleteUserAlone(users);
         }
 
+        public void DeleteGroupAll()
+        {
+             ThisConn.Execute("DELETE FROM Groups");
+        }
+
+        public void DeleteUserAll()
+        {
+            ThisConn.Execute("DELETE FROM Users");
+        }
+
+        public void DeleteAuthorityAll()
+        {
+            ThisConn.Execute("DELETE FROM Authorities");
+        }
+
         #endregion
 
         #region Find
 
         public List<Group> FindGroupAll()
         {
-            return ThisConn.Query<Group>("select * from Group").ToList();
+            return ThisConn.Query<Group>("select * from Groups").ToList();
         }
 
         public List<User> FindUserAll()
