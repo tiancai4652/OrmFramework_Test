@@ -10,6 +10,7 @@ namespace DatabaseGenerater
 {
     class Program
     {
+        //本程序功能为自动创建数据库
         // 通过EF_Code First创建数据库表结构
         //只能创建Mysql和Sqlserver表
         //Sqlite不支持自动创建

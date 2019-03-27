@@ -227,17 +227,17 @@ namespace ORM_Test_Demo_wpf
 
         public List<Group> FindGroupByDescribe(string x)
         {
-            return ThisConn.Query<Group>("select * from Group where Describe=@Describe",x).ToList();
+            return ThisConn.Query<Group>("select * from Group where Describe=@Describe",new{ Describe=x }).ToList();
         }
 
         public List<User> FindUserByName(string x)
         {
-            return ThisConn.Query<User>("select * from Users where Name=@Name", x).ToList();
+            return ThisConn.Query<User>("select * from Users where Name=@Name", new { Name=x }).ToList();
         }
 
         public List<Authority> FindAuthoritiesByName(string x)
         {
-            return ThisConn.Query<Authority>("select * from Authorities where AuthorityDescribe=@AuthorityDescribe", x).ToList();
+            return ThisConn.Query<Authority>("select * from Authorities where AuthorityDescribe=@AuthorityDescribe", new { AuthorityDescribe=x }).ToList();
         }
 
         #endregion

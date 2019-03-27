@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper_Test", "Dapper_Test\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM_Test_Demo_wpf", "ORM_Test_Demo_wpf\ORM_Test_Demo_wpf.csproj", "{743D73AC-35E5-4B94-BCE4-15543D567156}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orm_Test_Console", "Orm_Test_Console\Orm_Test_Console.csproj", "{601D06F0-1794-43E6-BEC4-E4390F608F83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{743D73AC-35E5-4B94-BCE4-15543D567156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{743D73AC-35E5-4B94-BCE4-15543D567156}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{743D73AC-35E5-4B94-BCE4-15543D567156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601D06F0-1794-43E6-BEC4-E4390F608F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601D06F0-1794-43E6-BEC4-E4390F608F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601D06F0-1794-43E6-BEC4-E4390F608F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601D06F0-1794-43E6-BEC4-E4390F608F83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

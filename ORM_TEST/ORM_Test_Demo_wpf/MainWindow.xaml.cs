@@ -18,6 +18,10 @@ using System.Windows.Shapes;
 
 namespace ORM_Test_Demo_wpf
 {
+    //本程序为测试一下ef和dapper 的性能对比
+    //dapper的连接字符串在Dapper内定义
+    //EF的连接字符串在App.config内定义
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
